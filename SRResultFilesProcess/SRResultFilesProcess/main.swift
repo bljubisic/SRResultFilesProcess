@@ -22,11 +22,11 @@ func processFiles() {
                     let data = try file.read()
                     if file.name.contains("apple") {
                         let rApple = try JSONDecoder().decode(Results.self, from: data)
-                        let resultLine = "\(rApple.reference), \(rApple.transcription), \(rApple.wordErrorRate)"
+                        let resultLine = "\(rApple.reference.joined(separator: " ")), \(rApple.transcription.joined(separator: " ")), \(rApple.wordErrorRate)\n"
                         try resultApple.append(resultLine, encoding: .utf8)
                     } else if file.name.contains("whisper") {
                         let rWhisper = try JSONDecoder().decode(Results.self, from: data)
-                        let resultLine = "\(rWhisper.reference), \(rWhisper.transcription), \(rWhisper.wordErrorRate)"
+                        let resultLine = "\(rWhisper.reference.joined(separator: " ")), \(rWhisper.transcription.joined(separator: " ")), \(rWhisper.wordErrorRate)\n"
                         try resultWhisper.append(resultLine, encoding: .utf8)
                     }
                 } catch {
